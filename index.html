@@ -10,7 +10,15 @@
 </head>
 <body>
     <div class="container">
-        
+        <form action="#" class="search" autocomplete="off">
+            <input type="text" class="search__input" placeholder="Search marvel characters" id="search-input">
+            <button class="search__button" id="search-button">
+                <svg class="search__icon">
+                    <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
+                </svg>
+            </button>
+            <div class="search__results" id="search-results"></div>
+        </form>
     </div>
     <script src="js/app.js"></script>
 </body>

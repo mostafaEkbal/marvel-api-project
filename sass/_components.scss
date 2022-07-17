@@ -1,0 +1,49 @@
+.container {
+    background-color: rgba($color: white, $alpha: .8);
+    opacity: .8;
+    min-height: 60rem;
+    width: 100rem;
+    margin: 9.5rem auto;
+    padding: 2rem;
+}
+
+.search {
+
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    width: 90%;
+    margin: 0 auto;
+
+    &__input {
+        border: none;
+        padding: .7rem 2rem;
+        font-size: 1.6rem;
+        width: 100%;
+        grid-column: 1;
+        transition: width 200ms;
+        justify-self: center;
+
+        &:focus {
+            outline: none;
+        }
+
+        &::placeholder {
+            font-weight: 100;
+        }
+    }
+
+
+    &__button {
+        border: none;
+        outline: none;
+        background-color: #fff;
+        padding: .3rem .5rem;
+        justify-self: center;
+    }
+
+    &__icon {
+        width: 2.2rem;
+        height: 2.2rem;
+        fill: var(--color-grey-dark-3)
+    }
+}

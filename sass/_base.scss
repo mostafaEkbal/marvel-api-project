@@ -1,3 +1,23 @@
+:root {
+    --color-primary: #eb2f64;
+    --color-primary-light: #FF3366;
+    --color-primary-dark: #BA265D;
+
+    --color-grey-light-1: #faf9f9;
+    --color-grey-light-2: #f4f2f2;
+    --color-grey-light-3: #f0eeee;
+    --color-grey-light-4: #ccc;
+
+    --color-grey-dark-1: #333;
+    --color-grey-dark-2: #777;
+    --color-grey-dark-3: #999;
+
+    --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+    --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.06);
+
+    --line: 1px solid var(--color-grey-light-2);
+}
+
 *,
 *::after,
 *::before {
@@ -15,6 +35,9 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 300;
     line-height: 1.6;
-    color: gainsboro;
-    background-image: linear-gradient(45deg, red, blue), url(../img/main.jpg);
+    color: var(--color-grey-dark-2);
+    background-image: linear-gradient(45deg, rgba(255,0,0,0), rgba(255,0,0,1)),linear-gradient(45deg,rgba(255,0,0,1), rgba(255,0,0,0)), url(../img/main.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
