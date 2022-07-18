@@ -1,4 +1,5 @@
-const baseURL = `http://gateway.marvel.com/v1/public/characters?orderBy=name&ts=1&apikey=f5ae36bdac41720b22fe45a619940cd7&hash=a473899226e72fc5a0138c0edf48520f&limit=100`;
+import { baseURL } from "./priv";
+
 const container = document.querySelector('.container');
 const search_input = document.getElementById('search-input');
 const search_results = document.getElementById('search-results');
@@ -15,7 +16,7 @@ function get_search_results() {
             return;
         }
         if(e.target.value.length > 1){return}
-        fetch(baseURL + `&nameStartsWith=${e.target.value}`)
+        fetch(`${baseURL}&nameStartsWith=${e.target.value}`)
         .then((res) => {
             return res.json();
         })
