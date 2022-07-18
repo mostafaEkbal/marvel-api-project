@@ -8,7 +8,6 @@
 }
 
 .search {
-
     display: grid;
     grid-template-columns: 1fr min-content;
     width: 90%;
@@ -33,7 +32,6 @@
         }
     }
 
-
     &__button {
         border: none;
         outline: none;
@@ -46,6 +44,42 @@
         width: 2.2rem;
         height: 2.2rem;
         fill: var(--color-grey-dark-3)
+    }
+
+    &__results {
+        display: flex;
+
+        background-color: var(--color-grey-light-2);
+        grid-column: span 2;
+        max-height: 25rem;
+        padding: .7rem 2rem;
+        opacity: 0;
+        visibility: hidden;
+
+        &--active {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &__input:not(:focus) ~ &__results {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    &__list {
+        flex: 1;
+        overflow: auto;
+    }
+
+    &__item {
+        font-size: 1.6rem;
+        color: #000;
+        padding: .2rem .5rem;
+
+        &:not(:last-child) {
+            border-bottom: var(--line);
+        }
     }
 }
 

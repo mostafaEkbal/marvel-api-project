@@ -1,8 +1,9 @@
-import { baseURL } from "./priv";
+import { baseURL } from "./priv.js";
 
 const container = document.querySelector('.container');
 const search_input = document.getElementById('search-input');
 const search_results = document.getElementById('search-results');
+const search_list = document.getElementById('search-list');
 const search_button = document.getElementById('search-button');
 let num = 1;
 let characterNames = [
@@ -12,8 +13,7 @@ let characterNames = [
 function get_search_results() {
     search_input.addEventListener('input', (e) => {
         if(e.target.value === ''){
-            search_results.innerHTML = "";
-            return;
+            empty_search_results();
         }
         if(e.target.value.length > 1){return}
         fetch(`${baseURL}&nameStartsWith=${e.target.value}`)
@@ -22,14 +22,21 @@ function get_search_results() {
         })
         .then((data) => {
             let results = data.data.results;
+            search_results.classList.add('search__results--active');
             results.forEach(element => {
-                console.log(element);
                 let character_list = document.createElement('li');
+                character_list.classList.add('search__item');
                 character_list.append(element.name);
-                search_results.append(character_list);
+                search_list.append(character_list);
             })
         })
     })
+}
+
+function empty_search_results() {
+    search_list.innerHTML = "";
+    search_results.classList.remove('search__results--active');
+    return;
 }
 
 get_search_results();
