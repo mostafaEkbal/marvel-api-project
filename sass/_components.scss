@@ -17,6 +17,7 @@
     &__input {
         border: none;
         padding: 1.2rem 2rem;
+        color: var(--color-grey-dark-1);
         font-size: 1.6rem;
         width: 100%;
         grid-column: 1;
@@ -52,9 +53,10 @@
         background-color: var(--color-grey-light-2);
         grid-column: span 2;
         max-height: 25rem;
-        padding: .7rem 2rem;
+        padding: .8rem 1rem;
         opacity: 0;
         visibility: hidden;
+        box-shadow: var(--shadow-light);
 
         &--active {
             opacity: 1;
@@ -73,12 +75,18 @@
     }
 
     &__item {
-        font-size: 1.6rem;
-        color: #000;
-        padding: .2rem .5rem;
+        font-size: 1.5rem;
+        color: var(--color-grey-dark-1);
+        padding: .7rem .5rem;
+        transition: background-color 50ms;
+        cursor: default;
 
         &:not(:last-child) {
             border-bottom: var(--line);
+        }
+
+        &:hover {
+            background-color: var(--color-grey-light-4);
         }
     }
 }
