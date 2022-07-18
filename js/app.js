@@ -14,9 +14,11 @@ function get_search_results() {
         search_list.innerHTML = "";
         if(search_term === ''){
             empty_search_results();
+            return;
         }
         if(search_term.length > 1){
             fitler_search_results(search_term);
+            return;
         }
         fetch(`${baseURL}&nameStartsWith=${e.target.value}`)
         .then((res) => {
@@ -40,16 +42,14 @@ function get_search_results() {
 
 function empty_search_results() {
     search_results.classList.remove('search__results--active');
-    return;
 }
 
 function fitler_search_results(searchTerm) {
     characterNames.forEach(character => {
         if (character.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1) {
-            search_list.innerHTML += `<li>${character}</li>`;
+            search_list.innerHTML += `<li class='search__item'>${character}</li>`
         }
     });
-    return;
 }
 
 get_search_results();
