@@ -14,7 +14,8 @@ function get_search_results() {
         let search_term = e.target.value;
         search_list.innerHTML = "";
         if(search_term === ''){
-            empty_search_results(fetch_limit);
+            empty_search_results();
+            fetch_limit = 0;
             return;
         }
         if(search_term.length > 1 || fetch_limit > 0){
@@ -38,8 +39,7 @@ function get_search_results() {
     })
 }
 
-function empty_search_results(fetchLimit) {
-    fetchLimit = 0;
+function empty_search_results() {
     search_results.classList.remove('search__results--active');
 }
 
