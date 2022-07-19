@@ -75,7 +75,7 @@ body {
     display: flex;
     background-color: var(--color-grey-light-2);
     grid-column: span 2;
-    max-height: 25rem;
+    max-height: 26.2rem;
     padding: .8rem 1rem;
     opacity: 0;
     visibility: hidden;
@@ -92,7 +92,7 @@ body {
   .search__item {
     font-size: 1.5rem;
     color: var(--color-grey-dark-1);
-    padding: .7rem .5rem;
+    padding: .3rem .7rem;
     transition: background-color 50ms;
     cursor: default; }
     .search__item:not(:last-child) {

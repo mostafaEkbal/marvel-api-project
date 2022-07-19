@@ -9,14 +9,15 @@ let characterNames = [
 ]
 
 function get_search_results() {
+    let fetch_limit = 0;
     search_input.addEventListener('input', (e) => {
         let search_term = e.target.value;
         search_list.innerHTML = "";
         if(search_term === ''){
-            empty_search_results();
+            empty_search_results(fetch_limit);
             return;
         }
-        if(search_term.length > 1){
+        if(search_term.length > 1 || fetch_limit > 0){
             fitler_search_results(search_term);
             return;
         }
@@ -25,22 +26,20 @@ function get_search_results() {
             return res.json();
         })
         .then((data) => {
+            fetch_limit ++;
             let results = data.data.results;
             search_results.classList.add('search__results--active');
             characterNames = [];
             results.forEach(element => {
                 characterNames.push(element.name);
-                let character_list = document.createElement('li');
-                character_list.classList.add('search__item');
-                character_list.append(element.name);
-                search_list.append(character_list);
-                console.log(characterNames);
+                search_list.innerHTML += `<li class='search__item'>${element.name}</li>`;
             })
         })
     })
 }
 
-function empty_search_results() {
+function empty_search_results(fetchLimit) {
+    fetchLimit = 0;
     search_results.classList.remove('search__results--active');
 }
 
