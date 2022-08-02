@@ -92,7 +92,7 @@ body {
   .search__item {
     font-size: 1.5rem;
     color: var(--color-grey-dark-1);
-    padding: .3rem .7rem;
+    padding: .5rem .7rem;
     transition: background-color 50ms;
     cursor: default; }
     .search__item:not(:last-child) {
@@ -102,3 +102,6 @@ body {
 
 .search:focus-within {
   width: 100%; }
+
+.highlight {
+  background-color: fuchsia; }

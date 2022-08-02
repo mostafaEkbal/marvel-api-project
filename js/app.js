@@ -19,7 +19,7 @@ function get_search_results() {
             return;
         }
         if(search_term.length > 1 || fetch_limit > 0){
-            fitler_search_results(search_term);
+            filter_search_results(search_term);
             return;
         }
         fetch(`${baseURL}&nameStartsWith=${e.target.value}`)
@@ -33,8 +33,8 @@ function get_search_results() {
             characterNames = [];
             results.forEach(element => {
                 characterNames.push(element.name);
-                search_list.innerHTML += `<li class='search__item'>${element.name}</li>`;
             })
+            filter_search_results(search_term);
         })
     })
 }
@@ -43,10 +43,14 @@ function empty_search_results() {
     search_results.classList.remove('search__results--active');
 }
 
-function fitler_search_results(searchTerm) {
-    characterNames.forEach(character => {
+function filter_search_results(searchTerm) {
+    characterNames.forEach((character, num) => {
         if (character.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1) {
-            search_list.innerHTML += `<li class='search__item'>${character}</li>`
+            search_list.innerHTML += `<li class='search__item' id="search__item${num}">${character}</li>`;
+            searchTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+            let item = document.getElementById(`search__item${num}`);
+            let pattern = new RegExp(searchTerm, "gi");
+            item.innerHTML = item.textContent.replace(pattern, match => `<b>${match}</b>`);
         }
     });
 }
