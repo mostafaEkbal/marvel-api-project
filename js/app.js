@@ -49,7 +49,7 @@ function filter_search_results(searchTerm) {
             search_list.innerHTML += `<li class='search__item' id="search__item${num}">${character}</li>`;
             searchTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
             let item = document.getElementById(`search__item${num}`);
-            let pattern = new RegExp(searchTerm, "gi");
+            let pattern = new RegExp(searchTerm, "i");
             item.innerHTML = item.textContent.replace(pattern, match => `<b>${match}</b>`);
         }
     });
