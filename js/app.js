@@ -29,7 +29,6 @@ function get_search_results() {
         .then((data) => {
             fetch_limit ++;
             let results = data.data.results;
-            search_results.classList.add('search__results--active');
             characterNames = [];
             results.forEach(element => {
                 characterNames.push(element.name);
@@ -46,11 +45,15 @@ function empty_search_results() {
 function filter_search_results(searchTerm) {
     characterNames.forEach((character, num) => {
         if (character.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1) {
+            search_results.classList.add('search__results--active');
             search_list.innerHTML += `<li class='search__item' id="search__item${num}">${character}</li>`;
             searchTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
             let item = document.getElementById(`search__item${num}`);
             let pattern = new RegExp(searchTerm, "i");
             item.innerHTML = item.textContent.replace(pattern, match => `<b>${match}</b>`);
+        }
+        if (search_list.innerHTML === '') {
+            search_results.classList.remove('search__results--active')
         }
     });
 }
