@@ -1,0 +1,16 @@
+.content {
+    position: absolute;
+    top: 20%;
+}
+
+.character-info {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+
+    &__name {
+        text-align: center;
+    }
+    &__story {
+        padding: 0 1.2rem;
+    }
+}

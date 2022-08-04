@@ -1,4 +1,9 @@
 .container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+
     background-color: rgba($color: white, $alpha: .8);
     opacity: .8;
     min-height: 60rem;
@@ -10,7 +15,7 @@
 .search {
     display: grid;
     grid-template-columns: 1fr min-content;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     transition: width 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
@@ -49,10 +54,11 @@
 
     &__results {
         display: flex;
-        
+        z-index: 100;
+
         background-color: var(--color-grey-light-2);
         grid-column: span 2;
-        max-height: 26.2rem;
+        max-height: 29.5rem;
         padding: .8rem 1rem;
         opacity: 0;
         visibility: hidden;
@@ -74,6 +80,9 @@
     }
 
     &__item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
         font-size: 1.5rem;
         color: var(--color-grey-dark-1);
         padding: .5rem .7rem;
@@ -90,10 +99,10 @@
     }
 }
 
-.search:focus-within {
+/* .search:focus-within {
     width: 100%;
 }
-
+ */
 .highlight {
     background-color: fuchsia;
 }

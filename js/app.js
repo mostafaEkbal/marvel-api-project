@@ -35,6 +35,7 @@ function get_search_results() {
             filter_search_results(search_term);
             searchItemsClickListener();
         })
+        e.preventDefault();
     })
 }
 
@@ -73,12 +74,10 @@ function filter_search_results(searchTerm) {
 
 function searchItemsClickListener() {
     const searchItems = document.querySelectorAll('.search__item');
-    console.log(searchItems);
     searchItems.forEach(li => {
         li.addEventListener('click', (e) => {
             let liText = li.textContent;
             search_input.value = liText;
-            console.log('clicked');
             e.preventDefault();
         });
     });
