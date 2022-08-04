@@ -4,9 +4,8 @@ const search_input = document.getElementById('search-input');
 const search_results = document.getElementById('search-results');
 const search_list = document.getElementById('search-list');
 const search_button = document.getElementById('search-button');
-let characterNames = [
-
-]
+let characterNames = []
+let allData = [];
 
 function get_search_results() {
     let fetch_limit = 0;
@@ -28,12 +27,13 @@ function get_search_results() {
         })
         .then((data) => {
             fetch_limit ++;
-            let results = data.data.results;
+            allData = data.data.results;
             characterNames = [];
-            results.forEach(element => {
+            allData.forEach(element => {
                 characterNames.push(element.name);
             })
             filter_search_results(search_term);
+            searchItemsClickListener();
         })
     })
 }
@@ -46,15 +46,41 @@ function filter_search_results(searchTerm) {
     characterNames.forEach((character, num) => {
         if (character.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1) {
             search_results.classList.add('search__results--active');
-            search_list.innerHTML += `<li class='search__item' id="search__item${num}">${character}</li>`;
+            /* search_list.innerHTML += `<li class='search__item' id="search__item${num}">
+            <img src="http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16/standard_small.jpg" alt="item${num} thumbnail">
+            <span>${character}</span></li>`; */
+            let searchItem = document.createElement('li');
+            let searchName = document.createElement('span');
+            let searchImage = document.createElement('img');
+            searchItem.id = `search__item${num}`
+            searchItem.classList.add('search__item');
+            searchImage.src = allData[num].thumbnail.path + '/standard_small.jpg';
+            searchImage.alt = `item${num} thumbnail`
+            let characterName = document.createTextNode(character);
+            searchName.append(characterName);
+            searchItem.append(searchImage, searchName);
+            search_list.append(searchItem);
             searchTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
-            let item = document.getElementById(`search__item${num}`);
+            /* let searchItem = document.querySelector(`#search__item${num}`); */
             let pattern = new RegExp(searchTerm, "i");
-            item.innerHTML = item.textContent.replace(pattern, match => `<b>${match}</b>`);
+            searchName.innerHTML = searchName.textContent.replace(pattern, match => `<b>${match}</b>`);
         }
         if (search_list.innerHTML === '') {
             search_results.classList.remove('search__results--active')
         }
+    });
+}
+
+function searchItemsClickListener() {
+    const searchItems = document.querySelectorAll('.search__item');
+    console.log(searchItems);
+    searchItems.forEach(li => {
+        li.addEventListener('click', (e) => {
+            let liText = li.textContent;
+            search_input.value = liText;
+            console.log('clicked');
+            e.preventDefault();
+        });
     });
 }
 

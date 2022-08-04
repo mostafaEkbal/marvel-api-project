@@ -49,7 +49,7 @@
 
     &__results {
         display: flex;
-
+        
         background-color: var(--color-grey-light-2);
         grid-column: span 2;
         max-height: 26.2rem;
@@ -66,7 +66,6 @@
 
     &__input:not(:focus) ~ &__results {
         opacity: 0;
-        visibility: hidden;
     }
 
     &__list {

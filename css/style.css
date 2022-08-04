@@ -84,8 +84,7 @@ body {
       opacity: 1;
       visibility: visible; }
   .search__input:not(:focus) ~ .search__results {
-    opacity: 0;
-    visibility: hidden; }
+    opacity: 0; }
   .search__list {
     flex: 1;
     overflow: auto; }
