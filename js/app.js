@@ -4,6 +4,7 @@ const search_input = document.getElementById('search-input');
 const search_results = document.getElementById('search-results');
 const search_list = document.getElementById('search-list');
 const search_button = document.getElementById('search-button');
+const character_info = document.querySelector('.character-info')
 let characterNames = []
 let allData = [];
 
@@ -19,6 +20,7 @@ function get_search_results() {
         }
         if(search_term.length > 1 || fetch_limit > 0){
             filter_search_results(search_term);
+            searchItemsClickListener();
             return;
         }
         fetch(`${baseURL}&nameStartsWith=${e.target.value}`)
@@ -33,6 +35,7 @@ function get_search_results() {
                 characterNames.push(element.name);
             })
             filter_search_results(search_term);
+            populateCharacterInfo(allData);
             searchItemsClickListener();
         })
         e.preventDefault();
@@ -64,7 +67,7 @@ function filter_search_results(searchTerm) {
             searchTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
             /* let searchItem = document.querySelector(`#search__item${num}`); */
             let pattern = new RegExp(searchTerm, "i");
-            searchName.innerHTML = searchName.textContent.replace(pattern, match => `<b>${match}</b>`);
+            searchName.innerHTML = searchName.textContent.replace(pattern, match => `<span style="color: #000;">${match}</span>`);
         }
         if (search_list.innerHTML === '') {
             search_results.classList.remove('search__results--active')
@@ -78,9 +81,28 @@ function searchItemsClickListener() {
         li.addEventListener('click', (e) => {
             let liText = li.textContent;
             search_input.value = liText;
+            search_results.classList.remove('search__results--active');
             e.preventDefault();
         });
     });
+}
+
+function populateCharacterInfo(characterData) {
+    let characterLayout = '';
+    for(let i = 0; i <= 5; i++) {
+        characterLayout += `<div>${characterData[5].comics.items[i].name}</div>`;
+    }
+    character_info.innerHTML = `
+                <img src="${characterData[5].thumbnail.path + '/portrait_incredible.jpg'}" alt="portrait_incredible" class="character-info__image">
+                <div class="character-info__story">
+                    <h1 class="character-info__name">${characterData[5].name}</h1>
+                    <p class="character-info__description">${characterData[5].description}</p>
+                    <div class="character-info__comics character-info__card"> ${characterLayout} </div>
+                    <div class="character-info__events character-info__card"> ${characterData[5].events.items[0].name} </div>
+                    <div class="character-info__series character-info__card"> ${characterData[5].series.items[0].name} </div>
+                    <div class="character-info__stories character-info__card"> ${characterData[5].stories.items[0].name} </div>
+                </div>
+    `
 }
 
 get_search_results();

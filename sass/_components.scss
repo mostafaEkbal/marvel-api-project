@@ -1,8 +1,8 @@
 .container {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
+    display: grid;
+    grid-template-rows: repeat(2, max-content);
+    row-gap: 4rem;
 
     background-color: rgba($color: white, $alpha: .8);
     opacity: .8;
@@ -13,6 +13,7 @@
 }
 
 .search {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr min-content;
     width: 100%;
@@ -53,6 +54,9 @@
     }
 
     &__results {
+        position: absolute;
+        top: 100%;
+        width: 100%;
         display: flex;
         z-index: 100;
 
@@ -62,6 +66,7 @@
         padding: .8rem 1rem;
         opacity: 0;
         visibility: hidden;
+        
         box-shadow: var(--shadow-light);
 
         &--active {
@@ -72,11 +77,12 @@
 
     &__input:not(:focus) ~ &__results {
         opacity: 0;
+        z-index: -1;
     }
 
     &__list {
         flex: 1;
-        overflow: auto;
+        overflow-y: auto;
     }
 
     &__item {
