@@ -78,7 +78,6 @@
 
     &__input:not(:focus) ~ &__results {
         opacity: 0;
-        z-index: -1;
     }
 
     &__list {

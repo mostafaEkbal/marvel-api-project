@@ -94,8 +94,7 @@ body {
       opacity: 1;
       visibility: visible; }
   .search__input:not(:focus) ~ .search__results {
-    opacity: 0;
-    z-index: -1; }
+    opacity: 0; }
   .search__list {
     flex: 1;
     overflow-y: auto; }
@@ -121,7 +120,7 @@ body {
   background-color: fuchsia; }
 
 .content {
-  z-index: 1; }
+  /* z-index: 1; */ }
 
 .character-info {
   display: grid;
