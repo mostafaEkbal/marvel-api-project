@@ -77,7 +77,7 @@ function filter_search_results(searchTerm) {
 }
 
 function searchItemsClickListener() {
-    const searchItems = document.querySelectorAll('.search__item');
+    const searchItems = [...document.querySelectorAll('.search__item')];
     searchItems.forEach((li, num) => {
         li.addEventListener('click', (e) => {
             let liText = li.textContent;
