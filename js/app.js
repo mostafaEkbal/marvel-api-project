@@ -1,4 +1,4 @@
-import { baseURL } from "./priv.js";
+import { baseURL } from "../marvel-app/src/priv.js";
 
 const search_input = document.getElementById('search-input');
 const search_results = document.getElementById('search-results');

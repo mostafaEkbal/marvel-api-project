@@ -1,16 +1,17 @@
 import SearchResult from './SearchResult'
-import { BiSearch } from 'react-icons/bi'
+import { ImSearch} from 'react-icons/im'
 
-const Header = () => {
+const Header = ({ onSearch }) => {
   return (
     <header>
         <form className='search' autoComplete='off'>
-            <input type="text" className='search__input' placeholder='Search marvel characters' />
+            <input type="text" className='search__input' placeholder='Search marvel characters' 
+            onInput={(e) => onSearch(e.target.value)} />
             <button className='search__button'>
-                < BiSearch className='search__icon' onClick={(e) => {e.preventDefault()}}/>
+                <ImSearch className='search__icon' onClick={(e) => {e.preventDefault()}} />
             </button>
         </form>
-        < SearchResult />
+        <SearchResult />
     </header>
   )
 }
