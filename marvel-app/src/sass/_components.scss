@@ -51,10 +51,10 @@
     &__icon {
         width: 2.2rem;
         height: 2.2rem;
-        fill: var(--color-grey-dark-3)
+        fill: var(--color-grey-dark-3);
     }
 
-    &__results {
+    &__result {
         position: absolute;
         top: 100%;
         width: 100%;
@@ -76,7 +76,7 @@
         }
     }
 
-    &__input:not(:focus) ~ &__results {
+    &__input:not(:focus) ~ &__result {
         opacity: 0;
     }
 
