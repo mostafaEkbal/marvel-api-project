@@ -10,6 +10,7 @@ function App() {
   const onInput = async (searchValue) => {
     if(searchValue.length === 1 && !fetchLimit) {
       const charactersData = await fetchCharacters(searchValue)
+      console.log(charactersData)
       setCharacters(charactersData)
       setFetchLimit(true)
     }
@@ -22,14 +23,23 @@ function App() {
   // Fetch Characters Data
   const fetchCharacters = async (searchValue) => {
     const res = await fetch(`${baseURL}&nameStartsWith=${searchValue}`);
-    let data = await res.json();
+    const data = await res.json();
 
-    /* if(data.data.total > 100) {
+    if(data.data.total <= 100) {
+      return data.data.results
+    }
+
+    if(data.data.total <= 200) {
       const res2 = await fetch(`${baseURL}&nameStartsWith=${searchValue}&offset=100`)
-      data += await res2.json();
-    } */
+      const data2 = await res2.json();
+      return [...data.data.results, ...data2.data.results]
+    }
 
-    return data.data.results
+    const res2 = await fetch(`${baseURL}&nameStartsWith=${searchValue}&offset=100`)
+    const data2 = await res2.json();
+    const res3 = await fetch(`${baseURL}&nameStartsWith=${searchValue}&offset=200`)
+    const data3 = await res3.json();
+    return [...data.data.results, ...data2.data.results, ...data3.data.results]
   }
 
   return (
