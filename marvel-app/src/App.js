@@ -10,10 +10,11 @@ function App() {
   const onInput = async (searchValue) => {
     if(searchValue.length === 1 && !fetchLimit) {
       const charactersData = await fetchCharacters(searchValue)
-      setCharacters(charactersData.data.results)
+      setCharacters(charactersData)
       setFetchLimit(true)
     }
     if(!searchValue) {
+      setCharacters([])
       setFetchLimit(false)
     }
   }
@@ -28,12 +29,12 @@ function App() {
       data += await res2.json();
     } */
 
-    return data
+    return data.data.results
   }
 
   return (
     <div className='container'>
-      <Header onSearch={onInput} />
+      <Header characters={characters} onSearch={onInput} />
     </div>
   );
 }

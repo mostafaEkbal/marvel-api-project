@@ -1,7 +1,7 @@
 import SearchResult from './SearchResult'
 import { ImSearch} from 'react-icons/im'
 
-const Header = ({ onSearch }) => {
+const Header = ({ characters, onSearch }) => {
   return (
     <header>
         <form className='search' autoComplete='off'>
@@ -11,7 +11,7 @@ const Header = ({ onSearch }) => {
                 <ImSearch className='search__icon' onClick={(e) => {e.preventDefault()}} />
             </button>
         </form>
-        <SearchResult />
+        <SearchResult characters={characters} />
     </header>
   )
 }
