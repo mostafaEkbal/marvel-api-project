@@ -1,10 +1,13 @@
-import { useState } from "react";
-import { baseURL } from "./priv";
-import Header from "./components/Header";
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { baseURL } from './priv';
+import Header from './components/Header';
 
 function App() {
   const [characters, setCharacters] = useState([]);
   const [fetchLimit, setFetchLimit] = useState(false);
+
+  const location = useLocation();
 
   // OnInput
   const onInput = async (searchValue) => {

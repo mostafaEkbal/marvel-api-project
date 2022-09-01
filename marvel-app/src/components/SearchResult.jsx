@@ -1,4 +1,4 @@
-import SearchItem from "./SearchItem";
+import SearchItem from './SearchItem';
 
 const SearchResult = ({ characters, search }) => {
   return (
@@ -8,9 +8,9 @@ const SearchResult = ({ characters, search }) => {
           <ul className='search__list'>
             {characters
               .filter((character) => {
-                return search.toLowerCase() === ""
+                return search.toLowerCase() === ''
                   ? character
-                  : character.name.toLowerCase().includes(search);
+                  : character.name.toLowerCase().includes(search.toLowerCase());
               })
               .map((character) => (
                 <SearchItem
