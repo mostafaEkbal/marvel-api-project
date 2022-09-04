@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { baseURL } from './priv';
 import Header from './components/Header';
 import CharacterDetails from './components/CharacterDetails';
@@ -61,8 +61,22 @@ function App() {
 
   return (
     <div className='container'>
-      <Header characters={characters} onSearch={onInput} onSelect={onSelect} />
-      <CharacterDetails character={selectedCharacter} />
+      <Routes>
+        <Route
+          path='/'
+          element={
+            <Header
+              characters={characters}
+              onSearch={onInput}
+              onSelect={onSelect}
+            />
+          }
+        />
+        <Route
+          path='/character/:name'
+          element={<CharacterDetails character={selectedCharacter} />}
+        />
+      </Routes>
     </div>
   );
 }

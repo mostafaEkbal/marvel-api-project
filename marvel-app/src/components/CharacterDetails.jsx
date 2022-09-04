@@ -1,3 +1,5 @@
+import CharacterDetailsCard from './CharacterDetailsCard';
+
 const CharacterDetails = ({ character }) => {
   return (
     <>
@@ -13,12 +15,26 @@ const CharacterDetails = ({ character }) => {
             <p className='character-info__description'>
               {character.description}
             </p>
-            <div className='character-info__comics character-info__card'>
-              {character.comics.items.map((comic) => console.log(comic))}
+            <div className='character-info__comics character-info__cards'>
+              {character.comics.items.map((comic, index) => (
+                <CharacterDetailsCard key={index} name={comic.name} />
+              ))}
             </div>
-            <div className='character-info__events character-info__card'></div>
-            <div className='character-info__series character-info__card'></div>
-            <div className='character-info__stories character-info__card'></div>
+            <div className='character-info__events character-info__cards'>
+              {character.events.items.map((comic, index) => (
+                <CharacterDetailsCard key={index} name={comic.name} />
+              ))}
+            </div>
+            <div className='character-info__series character-info__cards'>
+              {character.series.items.map((comic, index) => (
+                <CharacterDetailsCard key={index} name={comic.name} />
+              ))}
+            </div>
+            <div className='character-info__stories character-info__cards'>
+              {character.stories.items.map((storie, index) => (
+                <CharacterDetailsCard key={index} name={storie.name} />
+              ))}
+            </div>
           </div>
         </div>
       )}
