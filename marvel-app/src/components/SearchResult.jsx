@@ -1,6 +1,6 @@
 import SearchItem from './SearchItem';
 
-const SearchResult = ({ characters, search }) => {
+const SearchResult = ({ characters, search, onSelect }) => {
   return (
     <>
       {characters.length > 0 && (
@@ -15,8 +15,8 @@ const SearchResult = ({ characters, search }) => {
               .map((character) => (
                 <SearchItem
                   key={character.id}
-                  characterName={character.name}
-                  characterPhoto={character.thumbnail.path}
+                  character={character}
+                  onSelect={onSelect}
                 />
               ))}
           </ul>

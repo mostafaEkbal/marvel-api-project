@@ -1,15 +1,21 @@
-import SearchResult from "./SearchResult";
-import { ImSearch } from "react-icons/im";
-import { useState } from "react";
+import SearchResult from './SearchResult';
+import { ImSearch } from 'react-icons/im';
+import { useState } from 'react';
 
-const Header = ({ characters, onSearch }) => {
-  const [search, setSearch] = useState("");
+const Header = ({ characters, onSearch, onSelect }) => {
+  const [search, setSearch] = useState('');
+
+  const onclick = (character) => {
+    onSelect(character);
+    setSearch('');
+  };
 
   return (
     <header>
       <form className='search' autoComplete='off'>
         <input
           type='text'
+          value={search}
           className='search__input'
           placeholder='Search marvel characters'
           onInput={(e) => onSearch(e.target.value)}
@@ -24,7 +30,11 @@ const Header = ({ characters, onSearch }) => {
           />
         </button>
       </form>
-      <SearchResult characters={characters} search={search} />
+      <SearchResult
+        characters={characters}
+        search={search}
+        onSelect={onclick}
+      />
     </header>
   );
 };

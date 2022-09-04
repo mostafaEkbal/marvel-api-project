@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { baseURL } from './priv';
 import Header from './components/Header';
+import CharacterDetails from './components/CharacterDetails';
 
 function App() {
   const [characters, setCharacters] = useState([]);
+  const [selectedCharacter, setSelectedCharacter] = useState(null);
   const [fetchLimit, setFetchLimit] = useState(false);
 
   const location = useLocation();
@@ -51,9 +53,16 @@ function App() {
     return [...data.data.results, ...data2.data.results, ...data3.data.results];
   };
 
+  // On Select
+  const onSelect = (character) => {
+    setSelectedCharacter(character);
+    setCharacters([]);
+  };
+
   return (
     <div className='container'>
-      <Header characters={characters} onSearch={onInput} />
+      <Header characters={characters} onSearch={onInput} onSelect={onSelect} />
+      <CharacterDetails character={selectedCharacter} />
     </div>
   );
 }

@@ -1,14 +1,17 @@
 import { Link } from 'react-router-dom';
 
-const SearchItem = ({ characterName, characterPhoto }) => {
+const SearchItem = ({ character, onSelect }) => {
   return (
-    <Link to={`/character/${characterName}`} style={{ textDecoration: 'none' }}>
+    <Link
+      to={`/character/${character.name}`}
+      style={{ textDecoration: 'none' }}
+      onClick={() => onSelect(character)}>
       <li className='search__item'>
         <img
-          src={characterPhoto + '/standard_small.jpg'}
-          alt={characterName + '-small-photo'}
+          src={character.thumbnail.path + '/standard_small.jpg'}
+          alt={character.name + '-small-photo'}
         />
-        <span>{characterName}</span>
+        <span>{character.name}</span>
       </li>
     </Link>
   );
