@@ -1,14 +1,14 @@
 import SearchItem from './SearchItem';
 
-const SearchResult = ({ characters, search, onSelect }) => {
+const SearchResult = ({ characters, search, onSelect, loading }) => {
   return (
     <>
-      {characters.length > 0 && (
-        <div className='search__result'>
+      <div className='search__result'>
+        {search.length >= 3 ? (
           <ul className='search__list'>
             {characters
               .filter((character) => {
-                return search.toLowerCase() === ''
+                return loading
                   ? character
                   : character.name.toLowerCase().includes(search.toLowerCase());
               })
@@ -20,8 +20,12 @@ const SearchResult = ({ characters, search, onSelect }) => {
                 />
               ))}
           </ul>
-        </div>
-      )}
+        ) : (
+          <div>
+            <h3>Type 3 letters to begin search</h3>
+          </div>
+        )}
+      </div>
     </>
   );
 };

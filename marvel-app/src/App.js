@@ -3,11 +3,13 @@ import { Route, Routes } from 'react-router-dom';
 import { baseURL } from './priv';
 import Header from './components/Header';
 import CharacterDetails from './components/CharacterDetails';
+import HomeContent from './components/HomeContent';
 
 function App() {
   const [characters, setCharacters] = useState([]);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   const [fetchLimit, setFetchLimit] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   // OnInput
   const onInput = async (searchValue) => {
@@ -16,6 +18,7 @@ function App() {
       console.log(charactersData);
       setCharacters(charactersData);
       setFetchLimit(true);
+      setLoading(false);
     }
     if (!searchValue) {
       setCharacters([]);
@@ -60,9 +63,15 @@ function App() {
 
   return (
     <div className='container'>
-      <Header characters={characters} onSearch={onInput} onSelect={onSelect} />
+      <Header
+        characters={characters}
+        onSearch={onInput}
+        onSelect={onSelect}
+        laoding={loading}
+      />
       <main className='content'>
         <Routes>
+          <Route path='/' element={<HomeContent />} />
           <Route
             path='/character/:name'
             element={<CharacterDetails character={selectedCharacter} />}

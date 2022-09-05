@@ -38,11 +38,14 @@
 
     &:focus {
       outline: none;
-      border-bottom-left-radius: 0;
     }
 
     &::placeholder {
       font-weight: 100;
+    }
+
+    &:not(:placeholder-shown) {
+      border-bottom-left-radius: 0;
     }
   }
 
@@ -57,7 +60,7 @@
     transition: border-radius 200ms;
   }
 
-  &__input:focus ~ &__button {
+  &__input:not(:placeholder-shown) ~ &__button {
     border-bottom-right-radius: 0;
   }
 
@@ -79,7 +82,7 @@
     background-color: var(--color-grey-light-3);
     grid-column: span 2;
     max-height: 29.5rem;
-    padding: 0.8rem 1rem;
+    padding: 1rem 0;
 
     box-shadow: var(--shadow-light);
 

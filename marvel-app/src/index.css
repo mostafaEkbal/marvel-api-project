@@ -67,10 +67,11 @@ body {
     border-radius: 10px 0 0 10px;
     transition: border-radius 200ms; }
     .search__input:focus {
-      outline: none;
-      border-bottom-left-radius: 0; }
+      outline: none; }
     .search__input::placeholder {
       font-weight: 100; }
+    .search__input:not(:placeholder-shown) {
+      border-bottom-left-radius: 0; }
   .search__button {
     border: none;
     outline: none;
@@ -79,7 +80,7 @@ body {
     justify-self: center;
     border-radius: 0 10px 10px 0;
     transition: border-radius 200ms; }
-  .search__input:focus ~ .search__button {
+  .search__input:not(:placeholder-shown) ~ .search__button {
     border-bottom-right-radius: 0; }
   .search__icon {
     width: 2.2rem;
@@ -95,7 +96,7 @@ body {
     background-color: var(--color-grey-light-3);
     grid-column: span 2;
     max-height: 29.5rem;
-    padding: 0.8rem 1rem;
+    padding: 1rem 0;
     box-shadow: var(--shadow-light);
     border-radius: 0 0 10px 10px;
     transition: opacity 200ms; }
