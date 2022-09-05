@@ -29,12 +29,12 @@ const Header = ({ characters, onSearch, onSelect }) => {
             }}
           />
         </button>
+        <SearchResult
+          characters={characters}
+          search={search}
+          onSelect={onclick}
+        />
       </form>
-      <SearchResult
-        characters={characters}
-        search={search}
-        onSelect={onclick}
-      />
     </header>
   );
 };

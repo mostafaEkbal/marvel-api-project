@@ -13,6 +13,7 @@
 }
 
 .search {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr min-content;
   width: 100%;
@@ -31,8 +32,13 @@
     justify-self: center;
     background-color: var(--color-grey-light-3);
 
+    border-radius: 10px 0 0 10px;
+
+    transition: border-radius 200ms;
+
     &:focus {
       outline: none;
+      border-bottom-left-radius: 0;
     }
 
     &::placeholder {
@@ -46,6 +52,13 @@
     background-color: var(--color-grey-light-3);
     padding: 0.3rem 0.5rem;
     justify-self: center;
+    border-radius: 0 10px 10px 0;
+
+    transition: border-radius 200ms;
+  }
+
+  &__input:focus ~ &__button {
+    border-bottom-right-radius: 0;
   }
 
   &__icon {
@@ -55,24 +68,24 @@
   }
 
   &__result {
+    position: absolute;
+
     grid-row: 2;
     width: 100%;
     display: flex;
     z-index: 100;
+    opacity: 0.9;
 
-    background-color: var(--color-grey-light-2);
+    background-color: var(--color-grey-light-3);
     grid-column: span 2;
     max-height: 29.5rem;
     padding: 0.8rem 1rem;
-    /* opacity: 0;
-        visibility: hidden; */
 
     box-shadow: var(--shadow-light);
 
-    &--active {
-      opacity: 1;
-      visibility: visible;
-    }
+    border-radius: 0 0 10px 10px;
+
+    transition: opacity 200ms;
   }
 
   &__input:not(:focus) ~ &__result {
@@ -104,10 +117,10 @@
   }
 }
 
-/* .search:focus-within {
-    width: 100%;
+.search:focus-within + .search__results {
+  background-color: red;
 }
- */
+
 .highlight {
   background-color: fuchsia;
 }

@@ -47,6 +47,7 @@ body {
   padding: 3rem 5rem; }
 
 .search {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr min-content;
   width: 100%;
@@ -62,9 +63,12 @@ body {
     grid-column: 1;
     transition: width 200ms;
     justify-self: center;
-    background-color: var(--color-grey-light-3); }
+    background-color: var(--color-grey-light-3);
+    border-radius: 10px 0 0 10px;
+    transition: border-radius 200ms; }
     .search__input:focus {
-      outline: none; }
+      outline: none;
+      border-bottom-left-radius: 0; }
     .search__input::placeholder {
       font-weight: 100; }
   .search__button {
@@ -72,26 +76,29 @@ body {
     outline: none;
     background-color: var(--color-grey-light-3);
     padding: 0.3rem 0.5rem;
-    justify-self: center; }
+    justify-self: center;
+    border-radius: 0 10px 10px 0;
+    transition: border-radius 200ms; }
+  .search__input:focus ~ .search__button {
+    border-bottom-right-radius: 0; }
   .search__icon {
     width: 2.2rem;
     height: 2.2rem;
     fill: var(--color-grey-dark-3); }
   .search__result {
+    position: absolute;
     grid-row: 2;
     width: 100%;
     display: flex;
     z-index: 100;
-    background-color: var(--color-grey-light-2);
+    opacity: 0.9;
+    background-color: var(--color-grey-light-3);
     grid-column: span 2;
     max-height: 29.5rem;
     padding: 0.8rem 1rem;
-    /* opacity: 0;
-        visibility: hidden; */
-    box-shadow: var(--shadow-light); }
-    .search__result--active {
-      opacity: 1;
-      visibility: visible; }
+    box-shadow: var(--shadow-light);
+    border-radius: 0 0 10px 10px;
+    transition: opacity 200ms; }
   .search__input:not(:focus) ~ .search__result {
     opacity: 0; }
   .search__list {
@@ -111,15 +118,11 @@ body {
     .search__item:hover {
       background-color: var(--color-grey-light-4); }
 
-/* .search:focus-within {
-    width: 100%;
-}
- */
+.search:focus-within + .search__results {
+  background-color: red; }
+
 .highlight {
   background-color: fuchsia; }
-
-.content {
-  /* z-index: 1; */ }
 
 .character-info {
   display: grid;

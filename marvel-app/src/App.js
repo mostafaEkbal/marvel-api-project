@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { baseURL } from './priv';
 import Header from './components/Header';
 import CharacterDetails from './components/CharacterDetails';
@@ -8,8 +8,6 @@ function App() {
   const [characters, setCharacters] = useState([]);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   const [fetchLimit, setFetchLimit] = useState(false);
-
-  const location = useLocation();
 
   // OnInput
   const onInput = async (searchValue) => {
@@ -57,26 +55,20 @@ function App() {
   const onSelect = (character) => {
     setSelectedCharacter(character);
     setCharacters([]);
+    setFetchLimit(false);
   };
 
   return (
     <div className='container'>
-      <Routes>
-        <Route
-          path='/'
-          element={
-            <Header
-              characters={characters}
-              onSearch={onInput}
-              onSelect={onSelect}
-            />
-          }
-        />
-        <Route
-          path='/character/:name'
-          element={<CharacterDetails character={selectedCharacter} />}
-        />
-      </Routes>
+      <Header characters={characters} onSearch={onInput} onSelect={onSelect} />
+      <main className='content'>
+        <Routes>
+          <Route
+            path='/character/:name'
+            element={<CharacterDetails character={selectedCharacter} />}
+          />
+        </Routes>
+      </main>
     </div>
   );
 }
