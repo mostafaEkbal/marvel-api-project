@@ -16,7 +16,7 @@ const CharacterDetails = ({ character }) => {
       setCharacterInfo(data.data.results[0]);
     };
     getCharacterInfo();
-  }, []);
+  }, [params.name]);
 
   return (
     <>
