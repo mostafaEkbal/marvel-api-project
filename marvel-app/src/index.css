@@ -125,6 +125,50 @@ body {
 .highlight {
   background-color: fuchsia; }
 
+.heading-1, .heading-2, .heading-3, .heading-4 {
+  font-weight: 400;
+  grid-column: 1/ -1; }
+
+.heading-1 {
+  font-size: 4.5rem;
+  color: var(color-grey-light-1);
+  line-height: 1; }
+
+.heading-2 {
+  font-size: 4rem;
+  font-style: italic;
+  line-height: 1; }
+  .heading-2--light {
+    color: var(color-grey-light-1); }
+  .heading-2--dark {
+    color: var(color-grey-dark-1); }
+
+.heading-3 {
+  font-size: 1.6rem;
+  color: var(color-primary);
+  text-transform: uppercase; }
+
+.heading-4 {
+  font-size: 1.9rem;
+  white-space: nowrap; }
+  .heading-4--light {
+    color: var(color-grey-light-1); }
+  .heading-4--dark {
+    color: var(color-grey-dark-1); }
+
+.btn {
+  background-color: var(color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  padding: 1.8rem 3rem;
+  cursor: pointer;
+  transition: all 200ms; }
+  .btn:hover {
+    background-color: var(color-primary-dark); }
+
 .character-info {
   display: grid;
   grid-template-columns: min-content 1fr; }

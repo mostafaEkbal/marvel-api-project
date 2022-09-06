@@ -23,35 +23,39 @@ const CharacterDetails = ({ character }) => {
       {characterInfo && (
         <div className='character-info'>
           <img
-            src={characterInfo.thumbnail.path + '/portrait_incredible.jpg'}
+            src={characterInfo.thumbnail.path + '/portrait_uncanny.jpg'}
             alt='portrait_incredible'
             className='character-info__image'
           />
           <div className='character-info__story'>
-            <h1 className='character-info__name'>{characterInfo.name}</h1>
+            <h2 className='character-info__name heading-2'>
+              {characterInfo.name}
+            </h2>
             <p className='character-info__description'>
               {characterInfo.description}
             </p>
-            <div className='character-info__comics character-info__cards'>
+            {/* <div className='character-info__comics character-info__cards'>
               {characterInfo.comics.items.map((comic, index) => (
                 <CharacterDetailsCard key={index} name={comic.name} />
               ))}
-            </div>
+            </div> */}
             <div className='character-info__events character-info__cards'>
+              <h4 className='heading-4'>Events</h4>
               {characterInfo.events.items.map((event, index) => (
                 <CharacterDetailsCard key={index} name={event.name} />
               ))}
             </div>
             <div className='character-info__series character-info__cards'>
+              <h4 className='heading-4'>Series</h4>
               {characterInfo.series.items.map((serie, index) => (
                 <CharacterDetailsCard key={index} name={serie.name} />
               ))}
             </div>
-            <div className='character-info__stories character-info__cards'>
+            {/* <div className='character-info__stories character-info__cards'>
               {characterInfo.stories.items.map((story, index) => (
                 <CharacterDetailsCard key={index} name={story.name} />
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       )}
