@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { baseURL } from '../priv';
 import CharacterDetailsCard from './CharacterDetailsCard';
 
-const CharacterDetails = ({ character }) => {
+const CharacterDetails = () => {
   const [characterInfo, setCharacterInfo] = useState(null);
 
   const params = useParams();

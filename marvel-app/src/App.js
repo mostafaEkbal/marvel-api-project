@@ -7,21 +7,23 @@ import HomeContent from './components/HomeContent';
 
 function App() {
   const [characters, setCharacters] = useState([]);
-  const [selectedCharacter, setSelectedCharacter] = useState(null);
   const [fetchLimit, setFetchLimit] = useState(false);
   const [loading, setLoading] = useState(true);
 
   // OnInput
   const onInput = async (searchValue) => {
     if (searchValue.length === 1 && !fetchLimit) {
+      console.log('loading');
       const charactersData = await fetchCharacters(searchValue);
       console.log(charactersData);
       setCharacters(charactersData);
       setFetchLimit(true);
       setLoading(false);
+      console.log('loaded');
     }
     if (!searchValue) {
       setCharacters([]);
+      setLoading(true);
       setFetchLimit(false);
     }
   };
@@ -55,8 +57,7 @@ function App() {
   };
 
   // On Select
-  const onSelect = (character) => {
-    setSelectedCharacter(character);
+  const onSelect = () => {
     setCharacters([]);
     setFetchLimit(false);
   };
@@ -67,15 +68,12 @@ function App() {
         characters={characters}
         onSearch={onInput}
         onSelect={onSelect}
-        laoding={loading}
+        loading={loading}
       />
       <main className='content'>
         <Routes>
           <Route path='/' element={<HomeContent />} />
-          <Route
-            path='/character/:name'
-            element={<CharacterDetails character={selectedCharacter} />}
-          />
+          <Route path='/character/:name' element={<CharacterDetails />} />
         </Routes>
       </main>
     </div>
