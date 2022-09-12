@@ -1,9 +1,6 @@
-import { useState } from 'react';
 import SearchItem from './SearchItem';
 
 const SearchResult = ({ characters, search, onSelect, loading }) => {
-  const [found, setFound] = useState(true);
-
   const filtered = characters.filter(character => {
     return character.name.toLowerCase().includes(search.toLowerCase());
   });
@@ -11,7 +8,6 @@ const SearchResult = ({ characters, search, onSelect, loading }) => {
   return (
     <>
       <div className='search__result'>
-        (
         <ul className='search__list'>
           {!loading ? (
             filtered.length ? (
@@ -31,7 +27,6 @@ const SearchResult = ({ characters, search, onSelect, loading }) => {
             </li>
           )}
         </ul>
-        )
       </div>
     </>
   );

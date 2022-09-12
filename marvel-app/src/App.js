@@ -11,11 +11,10 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   // OnInput
-  const onInput = async (searchValue) => {
+  const onInput = async searchValue => {
     if (searchValue.length === 1 && !fetchLimit) {
       console.log('loading');
       const charactersData = await fetchCharacters(searchValue);
-      console.log(charactersData);
       setCharacters(charactersData);
       setFetchLimit(true);
       setLoading(false);
@@ -29,7 +28,7 @@ function App() {
   };
 
   // Fetch Characters Data
-  const fetchCharacters = async (searchValue) => {
+  const fetchCharacters = async searchValue => {
     const res = await fetch(`${baseURL}&nameStartsWith=${searchValue}`);
     const data = await res.json();
 
@@ -59,6 +58,7 @@ function App() {
   // On Select
   const onSelect = () => {
     setCharacters([]);
+    setLoading(true);
     setFetchLimit(false);
   };
 

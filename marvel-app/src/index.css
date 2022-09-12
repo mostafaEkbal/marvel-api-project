@@ -183,9 +183,10 @@ body {
     gap: 2rem; }
   .character-info__cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
     grid-template-rows: repeat(2, min-content);
     gap: 1rem; }
   .character-info__card {
-    background-color: lavender;
+    padding: 0.8rem 0.5rem;
+    background-color: #ddd;
     box-shadow: var(--shadow-light); }
