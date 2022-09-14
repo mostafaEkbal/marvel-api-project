@@ -36,12 +36,6 @@ const CharacterDetails = () => {
                 {characterInfo.description}
               </p>
             )}
-
-            {/* <div className='character-info__comics character-info__cards'>
-              {characterInfo.comics.items.map((comic, index) => (
-                <CharacterDetailsCard key={index} name={comic.name} />
-              ))}
-            </div> */}
             <div className='character-info__events character-info__cards'>
               <h4 className='heading-4'>Events</h4>
               {characterInfo.events.items.map((event, index) => (
@@ -54,11 +48,6 @@ const CharacterDetails = () => {
                 <CharacterDetailsCard key={index} name={serie.name} />
               ))}
             </div>
-            {/* <div className='character-info__stories character-info__cards'>
-              {characterInfo.stories.items.map((story, index) => (
-                <CharacterDetailsCard key={index} name={story.name} />
-              ))}
-            </div> */}
           </div>
         </div>
       )}
