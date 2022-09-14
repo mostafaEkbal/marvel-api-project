@@ -31,9 +31,12 @@ const CharacterDetails = () => {
             <h2 className='character-info__name heading-2'>
               {characterInfo.name}
             </h2>
-            <p className='character-info__description'>
-              {characterInfo.description}
-            </p>
+            {characterInfo.description && (
+              <p className='character-info__description'>
+                {characterInfo.description}
+              </p>
+            )}
+
             {/* <div className='character-info__comics character-info__cards'>
               {characterInfo.comics.items.map((comic, index) => (
                 <CharacterDetailsCard key={index} name={comic.name} />

@@ -1,3 +1,4 @@
+import PocketBase from 'pocketbase';
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { baseURL } from './priv';
@@ -5,10 +6,12 @@ import Header from './components/Header';
 import CharacterDetails from './components/CharacterDetails';
 import HomeContent from './components/HomeContent';
 
-function App() {
+async function App() {
   const [characters, setCharacters] = useState([]);
   const [fetchLimit, setFetchLimit] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  const client = new PocketBase('http://127.0.0.1:8090');
 
   // OnInput
   const onInput = async searchValue => {
