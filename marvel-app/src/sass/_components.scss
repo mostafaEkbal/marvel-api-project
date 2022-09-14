@@ -38,14 +38,11 @@
 
     &:focus {
       outline: none;
+      border-bottom-left-radius: 0;
     }
 
     &::placeholder {
       font-weight: 100;
-    }
-
-    &:not(:placeholder-shown) {
-      border-bottom-left-radius: 0;
     }
   }
 
@@ -60,7 +57,7 @@
     transition: border-radius 200ms;
   }
 
-  &__input:not(:placeholder-shown) ~ &__button {
+  &__input:focus ~ &__button {
     border-bottom-right-radius: 0;
   }
 
@@ -93,7 +90,6 @@
 
   &__input:not(:focus) ~ &__result {
     opacity: 0;
-    z-index: -13;
   }
 
   &__list {

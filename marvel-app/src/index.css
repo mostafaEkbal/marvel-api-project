@@ -67,11 +67,10 @@ body {
     border-radius: 10px 0 0 10px;
     transition: border-radius 200ms; }
     .search__input:focus {
-      outline: none; }
+      outline: none;
+      border-bottom-left-radius: 0; }
     .search__input::placeholder {
       font-weight: 100; }
-    .search__input:not(:placeholder-shown) {
-      border-bottom-left-radius: 0; }
   .search__button {
     border: none;
     outline: none;
@@ -80,7 +79,7 @@ body {
     justify-self: center;
     border-radius: 0 10px 10px 0;
     transition: border-radius 200ms; }
-  .search__input:not(:placeholder-shown) ~ .search__button {
+  .search__input:focus ~ .search__button {
     border-bottom-right-radius: 0; }
   .search__icon {
     width: 2.2rem;
@@ -101,8 +100,7 @@ body {
     border-radius: 0 0 10px 10px;
     transition: opacity 200ms; }
   .search__input:not(:focus) ~ .search__result {
-    opacity: 0;
-    z-index: -13; }
+    opacity: 0; }
   .search__list {
     flex: 1;
     overflow-y: auto; }

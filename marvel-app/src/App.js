@@ -1,17 +1,15 @@
-import PocketBase from 'pocketbase';
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { baseURL } from './priv';
 import Header from './components/Header';
 import CharacterDetails from './components/CharacterDetails';
 import HomeContent from './components/HomeContent';
+import { AuthContextProvider } from './contexts/AuthContext';
 
-async function App() {
+function App() {
   const [characters, setCharacters] = useState([]);
   const [fetchLimit, setFetchLimit] = useState(false);
   const [loading, setLoading] = useState(true);
-
-  const client = new PocketBase('http://127.0.0.1:8090');
 
   // OnInput
   const onInput = async searchValue => {
@@ -74,10 +72,12 @@ async function App() {
         loading={loading}
       />
       <main className='content'>
-        <Routes>
-          <Route path='/' element={<HomeContent />} />
-          <Route path='/character/:name' element={<CharacterDetails />} />
-        </Routes>
+        <AuthContextProvider>
+          <Routes>
+            <Route path='/' element={<HomeContent />} />
+            <Route path='/character/:name' element={<CharacterDetails />} />
+          </Routes>
+        </AuthContextProvider>
       </main>
     </div>
   );
