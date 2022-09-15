@@ -131,7 +131,8 @@ body {
 .heading-1 {
   font-size: 4.5rem;
   color: var(color-grey-light-1);
-  line-height: 1; }
+  line-height: 1;
+  text-transform: uppercase; }
 
 .heading-2 {
   font-size: 4rem;
@@ -169,7 +170,14 @@ body {
     background-color: var(color-primary-dark); }
 
 .content__home {
-  font-size: 1.2rem; }
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; }
+  .content__home p {
+    font-size: 1.5rem; }
+  .content__home button {
+    align-self: center; }
 
 .character-info {
   display: grid;

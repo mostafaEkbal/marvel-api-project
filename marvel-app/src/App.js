@@ -6,6 +6,7 @@ import CharacterDetails from './components/CharacterDetails';
 import HomeContent from './components/HomeContent';
 import SignIn from './components/SignIn';
 import { AuthContextProvider } from './contexts/AuthContext';
+import Signup from './components/SignUp';
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -75,8 +76,9 @@ function App() {
       <main className='content'>
         <AuthContextProvider>
           <Routes>
-            <Route path='/Signin' element={<SignIn />} />
-            <Route path='/' element={<HomeContent />} />
+            <Route path='/' element={<SignIn />} />
+            <Route path='/Signup' element={<Signup />} />
+            <Route path='/account' element={<HomeContent />} />
             <Route path='/character/:name' element={<CharacterDetails />} />
           </Routes>
         </AuthContextProvider>

@@ -6,15 +6,28 @@ const SignIn = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
-  const { createUser } = UserAuth();
+  const { authUser } = UserAuth();
+  const { signInWithGoogle } = UserAuth();
   const navigate = useNavigate();
+
+  const onClickButton = async e => {
+    e.preventDefault();
+    setError('');
+    try {
+      await signInWithGoogle();
+      navigate('/account');
+    } catch (e) {
+      setError(e.message);
+      console.log(e.message);
+    }
+  };
 
   const handleSumbit = async e => {
     e.preventDefault();
     setError('');
 
     try {
-      await createUser(email, password);
+      await authUser(email, password);
       navigate('/');
     } catch (e) {
       setError(e.message);
@@ -55,6 +68,7 @@ const SignIn = () => {
         <button className='border border-blue-500 bg-blue-600 hover:bg-blue-500 w-full p-4 my-2 text-white'>
           Sign In
         </button>
+        <button onClick={onClickButton}>Sign In with google</button>
       </form>
     </div>
   );
