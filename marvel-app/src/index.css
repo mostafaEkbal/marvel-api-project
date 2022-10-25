@@ -1,7 +1,7 @@
 :root {
   --color-primary: #eb2f64;
-  --color-primary-light: #FF3366;
-  --color-primary-dark: #BA265D;
+  --color-primary-light: #ff3366;
+  --color-primary-dark: #ba265d;
   --color-grey-light-1: #faf9f9;
   --color-grey-light-2: #f4f2f2;
   --color-grey-light-3: #f0eeee;
@@ -29,7 +29,7 @@ body {
   font-weight: 300;
   line-height: 1.6;
   color: var(--color-grey-dark-2);
-  background-image: linear-gradient(45deg, rgba(255, 0, 0, 0), red), linear-gradient(45deg, red, rgba(255, 0, 0, 0)), url(img/main.jpg);
+  background-image: url(img/enhanced.watermark.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed; }
@@ -40,11 +40,12 @@ body {
   grid-template-rows: repeat(2, max-content);
   row-gap: 4rem;
   background-color: #fff;
-  opacity: 0.8;
+  opacity: 0.9;
   min-height: 60rem;
   width: 100rem;
   margin: 9.5rem auto;
-  padding: 3rem 5rem; }
+  padding: 3rem 5rem;
+  box-shadow: var(--shadow-dark); }
 
 .search {
   position: relative;

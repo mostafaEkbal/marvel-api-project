@@ -5,11 +5,12 @@
   row-gap: 4rem;
 
   background-color: #fff;
-  opacity: 0.8;
+  opacity: 0.9;
   min-height: 60rem;
   width: 100rem;
   margin: 9.5rem auto;
   padding: 3rem 5rem;
+  box-shadow: var(--shadow-dark);
 }
 
 .search {

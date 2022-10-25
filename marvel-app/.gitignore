@@ -24,4 +24,4 @@ yarn-error.log*
 
 # private
 priv.js
-src/firebase.js
+firebase.js

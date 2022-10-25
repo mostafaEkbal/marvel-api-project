@@ -20,21 +20,21 @@ const Signup = () => {
       navigate('/account');
     } catch (e) {
       setError(e.message);
-      console.log(e.message);
+      console.log(error);
     }
   };
 
   const handleSubmit = async e => {
     e.preventDefault();
     setError('');
-    if (password == confirmPassword) {
+    if (password === confirmPassword) {
       try {
         await createUser(email, password, name);
         console.log(name);
         navigate('/account');
       } catch (e) {
         setError(e.message);
-        console.log(e.message);
+        console.log(error);
       }
     } else console.log('password dont match');
   };

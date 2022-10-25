@@ -4,7 +4,6 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   signInWithPopup,
-  updateCurrentUser,
   updateProfile,
   signOut,
 } from 'firebase/auth';
