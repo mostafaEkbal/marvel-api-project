@@ -23,8 +23,12 @@
     text-align: center;
   }
 
+  &__description {
+    font-size: 1.5rem;
+  }
+
   &__image {
-    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+    box-shadow: 0.5rem 1rem 1rem rgba(0, 0, 0, 0.3);
   }
 
   &__story {
@@ -44,6 +48,25 @@
   &__card {
     padding: 0.8rem 0.5rem;
     background-color: #ddd;
-    box-shadow: var(--shadow-light);
+    box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.16);
+    text-align: center;
+
+    span {
+      font-size: 1.3rem;
+    }
+  }
+}
+
+.character-heading {
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 }

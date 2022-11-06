@@ -5,10 +5,10 @@
   row-gap: 4rem;
 
   background-color: #fff;
-  opacity: 0.9;
+  opacity: 0.94;
   min-height: 60rem;
   width: 100rem;
-  margin: 9.5rem auto;
+  margin: 7rem auto;
   padding: 3rem 5rem;
   box-shadow: var(--shadow-dark);
 }
@@ -75,14 +75,14 @@
     width: 100%;
     display: flex;
     z-index: 100;
-    opacity: 0.9;
+    opacity: 0.96;
 
     background-color: var(--color-grey-light-3);
     grid-column: span 2;
     max-height: 29.5rem;
     padding: 1rem 0;
 
-    box-shadow: var(--shadow-light);
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.13);
 
     border-radius: 0 0 10px 10px;
 

@@ -19,11 +19,13 @@ const SearchResult = ({ characters, search, onSelect, loading }) => {
                 />
               ))
             ) : (
-              <h3>Result Not Found</h3>
+              <h2 style={{ margin: '.3rem .5rem' }}>Result Not Found</h2>
             )
           ) : (
             <li>
-              <h2>Please a wait a second loading...</h2>
+              <h2 style={{ margin: '.3rem .5rem' }}>
+                Please a wait a second loading...
+              </h2>
             </li>
           )}
         </ul>

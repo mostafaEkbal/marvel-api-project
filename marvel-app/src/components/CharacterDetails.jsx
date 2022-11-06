@@ -21,33 +21,44 @@ const CharacterDetails = () => {
   return (
     <>
       {characterInfo && (
-        <div className='character-info'>
-          <img
-            src={characterInfo.thumbnail.path + '/portrait_uncanny.jpg'}
-            alt='portrait_incredible'
-            className='character-info__image'
-          />
+        <div>
           <div className='character-info__story'>
             <h2 className='character-info__name heading-2'>
               {characterInfo.name}
             </h2>
-            {characterInfo.description && (
-              <p className='character-info__description'>
-                {characterInfo.description}
-              </p>
+            <div className='character-heading'>
+              <img
+                src={characterInfo.thumbnail.path + '/landscape_incredible.jpg'}
+                alt='portrait_incredible'
+                className='character-info__image'
+              />
+              {characterInfo.description && (
+                <p className='character-info__description'>
+                  {characterInfo.description}
+                </p>
+              )}
+            </div>
+
+            {characterInfo.events.items.length ? (
+              <div className='character-info__events character-info__cards'>
+                <h4 className='heading-4'>Events</h4>
+                {characterInfo.events.items.map((event, index) => (
+                  <CharacterDetailsCard key={index} name={event.name} />
+                ))}
+              </div>
+            ) : (
+              <></>
             )}
-            <div className='character-info__events character-info__cards'>
-              <h4 className='heading-4'>Events</h4>
-              {characterInfo.events.items.map((event, index) => (
-                <CharacterDetailsCard key={index} name={event.name} />
-              ))}
-            </div>
-            <div className='character-info__series character-info__cards'>
-              <h4 className='heading-4'>Series</h4>
-              {characterInfo.series.items.map((serie, index) => (
-                <CharacterDetailsCard key={index} name={serie.name} />
-              ))}
-            </div>
+            {characterInfo.series.items.length ? (
+              <div className='character-info__series character-info__cards'>
+                <h4 className='heading-4'>Series</h4>
+                {characterInfo.series.items.map((serie, index) => (
+                  <CharacterDetailsCard key={index} name={serie.name} />
+                ))}
+              </div>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       )}
