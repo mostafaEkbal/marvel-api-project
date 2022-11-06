@@ -200,8 +200,11 @@ body {
     grid-template-rows: repeat(2, min-content);
     gap: 1rem; }
   .character-info__card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 0.8rem 0.5rem;
-    background-color: #ddd;
+    background-color: #eee;
     box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.16);
     text-align: center; }
     .character-info__card span {
@@ -217,3 +220,9 @@ body {
     height: 100%;
     object-fit: cover;
     display: block; }
+
+.character-cards--flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem; }

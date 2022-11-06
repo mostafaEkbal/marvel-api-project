@@ -40,11 +40,13 @@ const CharacterDetails = () => {
             </div>
 
             {characterInfo.events.items.length ? (
-              <div className='character-info__events character-info__cards'>
+              <div className='character-info__events '>
                 <h4 className='heading-4'>Events</h4>
-                {characterInfo.events.items.map((event, index) => (
-                  <CharacterDetailsCard key={index} name={event.name} />
-                ))}
+                <div className='character-cards--flex'>
+                  {characterInfo.events.items.map((event, index) => (
+                    <CharacterDetailsCard key={index} name={event.name} />
+                  ))}
+                </div>
               </div>
             ) : (
               <></>
@@ -52,6 +54,7 @@ const CharacterDetails = () => {
             {characterInfo.series.items.length ? (
               <div className='character-info__series character-info__cards'>
                 <h4 className='heading-4'>Series</h4>
+
                 {characterInfo.series.items.map((serie, index) => (
                   <CharacterDetailsCard key={index} name={serie.name} />
                 ))}
