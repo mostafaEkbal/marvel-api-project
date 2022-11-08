@@ -28,7 +28,7 @@ const CharacterDetails = () => {
             </h2>
             <div className='character-heading'>
               <img
-                src={characterInfo.thumbnail.path + '/landscape_incredible.jpg'}
+                src={characterInfo.thumbnail.path + '/portrait_uncanny.jpg'}
                 alt='portrait_incredible'
                 className='character-info__image'
               />

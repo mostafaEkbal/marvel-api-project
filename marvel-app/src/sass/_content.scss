@@ -40,8 +40,8 @@
 
   &__cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-    grid-template-rows: repeat(2, min-content);
+    grid-template-columns: repeat(auto-fit, minmax(min-content, 25rem));
+    grid-template-rows: repeat(2, max-content);
     gap: 1rem;
   }
 
@@ -79,4 +79,8 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
+
+  div {
+    flex-basis: 16.666%;
+  }
 }
