@@ -38,26 +38,27 @@ const CharacterDetails = () => {
                 </p>
               )}
             </div>
-
-            {characterInfo.events.items.length ? (
-              <div className='character-info__events '>
-                <h4 className='heading-4'>Events</h4>
-                <div className='character-cards--flex'>
-                  {characterInfo.events.items.map((event, index) => (
-                    <CharacterDetailsCard key={index} name={event.name} />
+            {characterInfo.series.items.length ? (
+              <div className='character-info__series'>
+                <h4 className='heading-4'>Series</h4>
+                <div className='character-info__cards'>
+                  {characterInfo.series.items.map((serie, index) => (
+                    <CharacterDetailsCard key={index} name={serie.name} />
                   ))}
                 </div>
               </div>
             ) : (
               <></>
             )}
-            {characterInfo.series.items.length ? (
-              <div className='character-info__series character-info__cards'>
-                <h4 className='heading-4'>Series</h4>
 
-                {characterInfo.series.items.map((serie, index) => (
-                  <CharacterDetailsCard key={index} name={serie.name} />
-                ))}
+            {characterInfo.events.items.length ? (
+              <div className='character-info__events'>
+                <h4 className='heading-4'>Events</h4>
+                <div className='character-cards--flex'>
+                  {characterInfo.events.items.map((event, index) => (
+                    <CharacterDetailsCard key={index} name={event.name} />
+                  ))}
+                </div>
               </div>
             ) : (
               <></>
